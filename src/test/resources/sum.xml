@@ -1,3 +1,5 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
 <suite name="SumSuite" verbose="1">
     <test name="SumSuite">
         <classes>

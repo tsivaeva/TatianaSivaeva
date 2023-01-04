@@ -74,6 +74,8 @@
                 <version>3.0.0-M7</version>
                 <configuration>
                     <suiteXmlFiles>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/allTests.xml</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/sub.xml</suiteXmlFile>
                         <suiteXmlFile>${project.basedir}/src/test/resources/sum.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>

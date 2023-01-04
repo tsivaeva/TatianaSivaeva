@@ -17,7 +17,6 @@ public class DivTest extends AbstractTest {
     @Test(dataProvider = "divCorrectData")
     public void divTest(double a, double b, double expected) {
         var actual = calculator.div(a, b);
-        //Assert.assertEquals(actual, expected, 0.001);
         softAssert.assertEquals(actual, expected, 0.001);
     }
 }
