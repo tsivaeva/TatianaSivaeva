@@ -1,5 +1,6 @@
-package com.epam;
+package com.epam.tc.hw1.tests;
 
+import com.epam.tc.hw1.AbstractTest;
 import org.testng.annotations.Test;
 
 public class SubTest extends AbstractTest {

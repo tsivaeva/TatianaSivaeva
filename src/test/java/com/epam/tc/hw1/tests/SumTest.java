@@ -1,5 +1,6 @@
-package com.epam;
+package com.epam.tc.hw1.tests;
 
+import com.epam.tc.hw1.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
