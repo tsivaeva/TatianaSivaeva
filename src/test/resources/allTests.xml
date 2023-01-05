@@ -10,6 +10,7 @@
             <class name="com.epam.tc.hw1.tests.SubTest"/>
             <class name="com.epam.tc.hw1.tests.SumTest"/>
             <class name="com.epam.tc.hw1.tests.TgTest"/>
+            <class name="com.epam.tc.hw1.AbstractTest"/>
         </classes>
     </test>
 </suite>

@@ -8,12 +8,12 @@ public class AbstractTest {
 
     protected Calculator calculator;
 
-    @BeforeMethod //(groups = {"group1", "group2"})
+    @BeforeMethod
     public void before() {
         calculator = new Calculator();
     }
 
-    @AfterMethod //(groups = {"group1", "group2"})
+    @AfterMethod
     public void after() {
         calculator = null;
     }
