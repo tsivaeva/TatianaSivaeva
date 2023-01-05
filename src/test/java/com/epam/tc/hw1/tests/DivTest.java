@@ -1,5 +1,7 @@
 package com.epam.tc.hw1.tests;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.epam.tc.hw1.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,9 +16,9 @@ public class DivTest extends AbstractTest {
         };
     }
 
-    @Test(dataProvider = "divCorrectData")
+    @Test(groups = {"group2"}, dataProvider = "divCorrectData")
     public void divTest(double a, double b, double expected) {
         var actual = calculator.div(a, b);
-        softAssert.assertEquals(actual, expected, 0.001);
+        assertThat(actual).isEqualTo(expected);
     }
 }

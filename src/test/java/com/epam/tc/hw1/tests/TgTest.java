@@ -1,5 +1,7 @@
 package com.epam.tc.hw1.tests;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.epam.tc.hw1.AbstractTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,6 +19,6 @@ public class TgTest extends AbstractTest {
     @Test(dataProvider = "tgCorrectData")
     public void tgTest(double a, double expected) {
         var actual = calculator.tg(a);
-        softAssert.assertEquals(actual, expected, 0.001);
+        assertThat(actual).isEqualTo(expected);
     }
 }

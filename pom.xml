@@ -15,46 +15,21 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.6.1</version>
+            <version>7.7.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.0.0-M7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dropbox.core</groupId>
-            <artifactId>dropbox-core-sdk</artifactId>
-            <version>5.4.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.5</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.4.5</version>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.23.1</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.19.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>my-repo</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
-
+            <scope>system</scope>
+            <systemPath>${project.basedir}/my-repo/calculator-1.0.jar</systemPath>
         </dependency>
     </dependencies>
     <build>
@@ -63,20 +38,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M7</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.basedir}/src/test/resources/allTests.xml</suiteXmlFile>
-                        <suiteXmlFile>${project.basedir}/src/test/resources/sub.xml</suiteXmlFile>
-                        <suiteXmlFile>${project.basedir}/src/test/resources/sum.xml</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/${suite.xml.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -116,15 +86,15 @@
             </properties>
         </profile>
         <profile>
-            <id>SumTest</id>
+            <id>group2</id>
             <properties>
-                <suite.xml.file>sum.xml</suite.xml.file>
+                <suite.xml.file>group2DivMul.xml</suite.xml.file>
             </properties>
         </profile>
         <profile>
-            <id>SubTest</id>
+            <id>group1</id>
             <properties>
-                <suite.xml.file>sub.xml</suite.xml.file>
+                <suite.xml.file>group1SumSub.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>

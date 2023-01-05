@@ -1,22 +1,19 @@
 package com.epam.tc.hw1;
 
 import com.epam.tat.module4.Calculator;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.asserts.SoftAssert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class AbstractTest {
 
     protected Calculator calculator;
-    protected SoftAssert softAssert;
 
-    @BeforeTest
+    @BeforeMethod //(groups = {"group1", "group2"})
     public void before() {
         calculator = new Calculator();
-        softAssert = new SoftAssert();
     }
 
-    @AfterTest
+    @AfterMethod //(groups = {"group1", "group2"})
     public void after() {
         calculator = null;
     }
