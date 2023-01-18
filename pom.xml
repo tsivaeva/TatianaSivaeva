@@ -37,7 +37,17 @@
             <version>3.10.1</version>
             <type>maven-plugin</type>
         </dependency>
-
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.7.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -102,6 +112,18 @@
             <id>group1</id>
             <properties>
                 <suite.xml.file>group1SumSub.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>exercise1</id>
+            <properties>
+                <suite.xml.file>Exercise1.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>exercise2</id>
+            <properties>
+                <suite.xml.file>Exercise2.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
