@@ -41,30 +41,37 @@ public class Exercise1 {
         SoftAssertions softly = new SoftAssertions();
         String url = "https://jdi-testing.github.io/jdi-light/index.html";
         driver.manage().window().maximize();
+
+        //Step1 - Open test site by URL
         driver.navigate().to(url);
+
+        //Step2 - Assert Browser title
         softly.assertThat(driver.getTitle()).isEqualTo("Home Page");
-        WebElement dropdownMenu = driver.findElement(By
-                .cssSelector("li[class='dropdown uui-profile-menu'] a.dropdown-toggle"));
-        dropdownMenu.click();
-        WebElement clickNameField = driver.findElement(By.id("name"));
-        clickNameField.click();
-        clickNameField.sendKeys("Roman");
-        WebElement clickPasswordField = driver.findElement(By.id("password"));
-        clickPasswordField.click();
-        clickPasswordField.sendKeys("Jdi1234");
-        WebElement elementEntere = driver.findElement(By.id("login-button"));
-        elementEntere.click();
+        driver.findElement(By.cssSelector("li[class='dropdown uui-profile-menu'] a.dropdown-toggle")).click();
+
+        //Step3 - Perform login
+        driver.findElement(By.id("name")).click();
+        driver.findElement(By.id("name")).sendKeys("Roman");
+        driver.findElement(By.id("password")).click();
+        driver.findElement(By.id("password")).sendKeys("Jdi1234");
+        driver.findElement(By.id("login-button")).click();
 
         WebElement userName = (new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("user-name"))));
         String innerTextUserName = userName.getAttribute("innerText");
         String expectedTextUserName = "ROMAN IOVLEV";
+
+        //Step4 - Perform  Assert Username is loggined
         softly.assertThat(innerTextUserName).isEqualTo(expectedTextUserName);
 
-        WebElement navbar = driver.findElement(By
-                .cssSelector("ul[class='uui-navigation nav navbar-nav m-l8']"));
-        String childrenNavbar = navbar.getAttribute("childElementCount");
+
+        String childrenNavbar = driver.findElement(By
+                .cssSelector("ul[class='uui-navigation nav navbar-nav m-l8']")).getAttribute("childElementCount");
         String expectedChildrenNavbar = "4";
+
+        //Step5 - Assert that there are 4 items on the header
+        //section are displayed and they have proper
+        //texts
         softly.assertThat(childrenNavbar).isEqualTo(expectedChildrenNavbar);
         WebElement navbarChild1 = driver.findElement(By
                 .cssSelector("ul[class='uui-navigation nav navbar-nav m-l8']>li:nth-child(1)"));
@@ -87,12 +94,14 @@ public class Exercise1 {
         String expectedNavbarChild4Name = "METALS & COLORS";
         softly.assertThat(navbarChild4Name).isEqualTo(expectedNavbarChild4Name);
 
-        WebElement benefitImage = driver.findElement(By
-                .cssSelector("div[class='row clerafix benefits']"));
-        String childrenbenefitImage = benefitImage.getAttribute("childElementCount");
-        String expectedbenefitImage = "4";
-        softly.assertThat(childrenbenefitImage).isEqualTo(expectedbenefitImage);
+        //Step6 -  Assert that there are 4 images on the Index
+        //        Page and they are displayed
+        String childrenbenefitImage = driver.findElement(By
+                .cssSelector("div[class='row clerafix benefits']")).getAttribute("childElementCount");
+        softly.assertThat(childrenbenefitImage).isEqualTo("4");
 
+        //Step7 - Assert that there are 4 texts on the Index
+        //Page under icons and they have proper text
         List<WebElement> benefitImages = driver.findElements(By
                 .cssSelector("div[class='benefit']"));
         String benefitImage0 = benefitImages.get(0).getAttribute("outerText");
@@ -109,18 +118,27 @@ public class Exercise1 {
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…";
         softly.assertThat(benefitImage3).isEqualTo(expectedbenefitImage3);
 
+        //Step8 - Assert that there is the iframe with “Frame
+        //Button” exist
         driver.switchTo().frame(driver.findElement(By.id("frame")));
-        WebElement iframeFrameButton = driver.findElement(By.id("frame-button"));
-        softly.assertThat(iframeFrameButton.isDisplayed()).isTrue();
+
+        //Step9 - Switch to the iframe and check that there is
+        //“Frame Button” in the iframe
+        softly.assertThat(driver.findElement(By.id("frame-button")).isDisplayed()).isTrue();
+
+        //Step10 - Switch to original window back
         driver.switchTo().defaultContent();
         softly.assertThat(driver.getTitle()).isEqualTo("Home Page");
 
+        //Step11 - Assert that there are 5 items in the Left
+        //Section are displayed and they have proper
+        //text
         WebElement sidebarMenuLeft = driver.findElement(By.cssSelector("ul[class='sidebar-menu left']"));
         String sidebarMenuLeftChild = sidebarMenuLeft.getAttribute("childElementCount");
-        String expectedSidebarMenuLeftChild = "5";
-        softly.assertThat(sidebarMenuLeftChild).isEqualTo(expectedSidebarMenuLeftChild);
+        softly.assertThat(sidebarMenuLeftChild).isEqualTo("5");
         softly.assertAll();
 
+        //Step11 -  Close Browser
         driver.close();
     }
 }
