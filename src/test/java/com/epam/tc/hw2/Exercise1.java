@@ -50,9 +50,7 @@ public class Exercise1 {
         driver.findElement(By.cssSelector("li[class='dropdown uui-profile-menu'] a.dropdown-toggle")).click();
 
         //Step3 - Perform login
-        driver.findElement(By.id("name")).click();
         driver.findElement(By.id("name")).sendKeys("Roman");
-        driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).sendKeys("Jdi1234");
         driver.findElement(By.id("login-button")).click();
 

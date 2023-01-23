@@ -1,14 +1,17 @@
 package com.epam.tc.hw2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.time.Duration;
 import java.util.List;
+
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -50,14 +53,10 @@ public class Exercise2 {
         WebElement dropdownMenu = driver1.findElement(By
                 .cssSelector("li[class='dropdown uui-profile-menu'] a.dropdown-toggle"));
         dropdownMenu.click();
-        WebElement clickNameField = driver1.findElement(By.id("name"));
-        clickNameField.click();
-        clickNameField.sendKeys("Roman");
-        WebElement clickPasswordField = driver1.findElement(By.id("password"));
-        clickPasswordField.click();
-        clickPasswordField.sendKeys("Jdi1234");
-        WebElement elementEntere = driver1.findElement(By.id("login-button"));
-        elementEntere.click();
+        driver1.findElement(By.id("name")).sendKeys("Roman");
+        driver1.findElement(By.id("password")).sendKeys("Jdi1234");
+        driver1.findElement(By.id("login-button")).click();
+
         WebElement userName = (new WebDriverWait(driver1, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("user-name"))));
 
@@ -69,30 +68,35 @@ public class Exercise2 {
         //Elements Page
         driver1.findElement(By
                 .cssSelector("ul[class='uui-navigation nav navbar-nav m-l8'] span[class='caret']")).click();
+
         WebElement menuDifferentElements = driver1.findElement(By
-                .xpath("/html/body/header/div/nav/ul[1]/li[3]/ul/li[8]"));
+                .xpath("//li[@class='dropdown open']//a[text()='Different elements']"));
+
         //or change to "ul[class='dropdown-menu']>li"
+        //li[@class='dropdown open']//a[text()='Different elements']
         menuDifferentElements.click();
 
         //Step6  - Select checkboxes
         List<WebElement> checkboxRadioButtonInput = driver1.findElements(By
                 .cssSelector("div[class='checkbox-row']>label input"));
+
         WebElement checkboxeWater = checkboxRadioButtonInput.get(0);
-        checkboxeWater.click();
+        driver1.findElement(By.xpath("//label[contains(., 'Water')]")).click();
         softly.assertThat(checkboxeWater.isSelected()).isEqualTo(true);
-        WebElement checkboxeWind = checkboxRadioButtonInput.get(3);
-        checkboxeWind.click();
+
+        WebElement checkboxeWind = checkboxRadioButtonInput.get(2);
+        driver1.findElement(By.xpath("//label[contains(., 'Wind')]")).click();
         softly.assertThat(checkboxeWind.isSelected()).isEqualTo(true);
-        ;
+
 
         //Step7  - Select radio
         WebElement radioSelen = checkboxRadioButtonInput.get(7);
-        radioSelen.click();
+        driver1.findElement(By.xpath("//label[contains(., 'Selen')]")).click();
         softly.assertThat(radioSelen.isSelected()).isEqualTo(true);
 
         //Step8  - Select in dropdown
-        List<WebElement> dropdownColors = driver1.findElements(By.cssSelector("div[class='colors'] option"));
-        dropdownColors.get(3).click();
+        Select drpColors = new Select(driver1.findElement(By.cssSelector("div[class='colors'] select")));
+        drpColors.selectByVisibleText("Yellow");
         WebElement colorsSelected = driver1.findElement(By.cssSelector("div[class='colors'] select"));
         softly.assertThat(colorsSelected.getAttribute("value")).isEqualTo("Yellow");
 
