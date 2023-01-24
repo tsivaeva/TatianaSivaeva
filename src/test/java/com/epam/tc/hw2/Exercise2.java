@@ -1,10 +1,9 @@
 package com.epam.tc.hw2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 import java.time.Duration;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,21 +39,20 @@ public class Exercise2 {
     @Test
     void test() {
         SoftAssertions softly = new SoftAssertions();
-        String url = "https://jdi-testing.github.io/jdi-light/index.html";
         driver1.manage().window().maximize();
 
         //Step1 - Open test site by URL
-        driver1.navigate().to(url);
+        driver1.navigate().to(TestData.URL);
 
         //Step2 - Assert Browser title
-        softly.assertThat(driver1.getTitle()).isEqualTo("Home Page");
+        softly.assertThat(driver1.getTitle()).isEqualTo(TestData.MAIN_PAGE_TITLE);
 
         //Step3 - Perform login
         WebElement dropdownMenu = driver1.findElement(By
                 .cssSelector("li[class='dropdown uui-profile-menu'] a.dropdown-toggle"));
         dropdownMenu.click();
-        driver1.findElement(By.id("name")).sendKeys("Roman");
-        driver1.findElement(By.id("password")).sendKeys("Jdi1234");
+        driver1.findElement(By.id("name")).sendKeys(TestData.NAME);
+        driver1.findElement(By.id("password")).sendKeys(TestData.PASSWORD);
         driver1.findElement(By.id("login-button")).click();
 
         WebElement userName = (new WebDriverWait(driver1, Duration.ofSeconds(10))
@@ -71,9 +69,6 @@ public class Exercise2 {
 
         WebElement menuDifferentElements = driver1.findElement(By
                 .xpath("//li[@class='dropdown open']//a[text()='Different elements']"));
-
-        //or change to "ul[class='dropdown-menu']>li"
-        //li[@class='dropdown open']//a[text()='Different elements']
         menuDifferentElements.click();
 
         //Step6  - Select checkboxes
@@ -87,7 +82,6 @@ public class Exercise2 {
         WebElement checkboxeWind = checkboxRadioButtonInput.get(2);
         driver1.findElement(By.xpath("//label[contains(., 'Wind')]")).click();
         softly.assertThat(checkboxeWind.isSelected()).isEqualTo(true);
-
 
         //Step7  - Select radio
         WebElement radioSelen = checkboxRadioButtonInput.get(7);
@@ -108,13 +102,12 @@ public class Exercise2 {
         //is corresponded to the status of radio button
         //• for dropdown there is a log row and value is
         //corresponded to the selected value.
-        List<WebElement> listLogs = driver1.findElements(By.cssSelector("ul[class='panel-body-list logs'] li"));
-        String waterLog = listLogs.get(3).getAttribute("outerText");
-        softly.assertThat(waterLog).contains("Water", "true");
-        String selenLog = listLogs.get(1).getAttribute("outerText");
-        softly.assertThat(selenLog).contains("Selen");
-        String coloreLog = listLogs.get(0).getAttribute("outerText");
-        softly.assertThat(coloreLog).contains("Yellow");
+        final List<String> outerText = driver1.findElements(By.cssSelector("ul[class='panel-body-list logs'] li"))
+                .stream()
+                .map(elem -> elem.getAttribute("outerText"))
+                .map(str -> str.substring(str.indexOf(" ") + 1))
+                .collect(Collectors.toList());
+        TestData.LOGS_ITEMS.forEach(log -> softly.assertThat(log).isIn(outerText));
         softly.assertAll();
 
         //Step10 - Close Browser
