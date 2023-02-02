@@ -43,10 +43,11 @@
             <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.7.0</version>
+            <version>4.8.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -117,7 +118,7 @@
         <profile>
             <id>exercise1</id>
             <properties>
-                <suite.xml.file>Exercise1.xml</suite.xml.file>
+                <suite.xml.file>exercise1.xml</suite.xml.file>
             </properties>
         </profile>
         <profile>
