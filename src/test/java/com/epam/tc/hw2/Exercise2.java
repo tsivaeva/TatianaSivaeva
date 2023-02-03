@@ -77,16 +77,16 @@ public class Exercise2 {
 
         WebElement checkboxeWater = checkboxRadioButtonInput.get(0);
         driver1.findElement(By.xpath("//label[contains(., 'Water')]")).click();
-        softly.assertThat(checkboxeWater.isSelected()).isEqualTo(true);
+        softly.assertThat(checkboxeWater.isSelected()).isTrue();
 
         WebElement checkboxeWind = checkboxRadioButtonInput.get(2);
         driver1.findElement(By.xpath("//label[contains(., 'Wind')]")).click();
-        softly.assertThat(checkboxeWind.isSelected()).isEqualTo(true);
+        softly.assertThat(checkboxeWind.isSelected()).isTrue();
 
         //Step7  - Select radio
         WebElement radioSelen = checkboxRadioButtonInput.get(7);
         driver1.findElement(By.xpath("//label[contains(., 'Selen')]")).click();
-        softly.assertThat(radioSelen.isSelected()).isEqualTo(true);
+        softly.assertThat(radioSelen.isSelected()).isTrue();
 
         //Step8  - Select in dropdown
         Select drpColors = new Select(driver1.findElement(By.cssSelector("div[class='colors'] select")));
