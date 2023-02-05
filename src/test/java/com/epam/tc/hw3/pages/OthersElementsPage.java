@@ -1,7 +1,10 @@
 package com.epam.tc.hw3.pages;
 
+import static com.epam.tc.hw4.tests.BaseTest.webDriver;
+
 import com.epam.tc.hw3.pages.components.ColorsDropDownComponent;
 import com.epam.tc.hw3.pages.components.LogComponent;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,5 +51,11 @@ public class OthersElementsPage {
 
     public WebElement getRadioSelen() {
         return radioSelen;
+    }
+
+    public WebElement findElement(String checkBoxName) {
+        String xpath = String.format("//label[text()[contains(.,' %s')]]/input", checkBoxName);
+        WebElement checkBoxElement = webDriver.findElement(By.xpath(xpath));
+        return checkBoxElement;
     }
 }
