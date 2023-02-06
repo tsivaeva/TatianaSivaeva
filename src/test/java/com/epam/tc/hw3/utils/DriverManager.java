@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverManager {
-    private void setupChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
 
     public WebDriver setupDriver(String url) {
         setupChromeDriver();
@@ -15,5 +12,8 @@ public class DriverManager {
         webDriver.manage().window().maximize();
         webDriver.get(url);
         return webDriver;
+    }
+    private void setupChromeDriver() {
+        WebDriverManager.chromedriver().setup();
     }
 }
