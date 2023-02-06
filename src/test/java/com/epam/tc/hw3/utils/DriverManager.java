@@ -13,6 +13,7 @@ public class DriverManager {
         webDriver.get(url);
         return webDriver;
     }
+
     private void setupChromeDriver() {
         WebDriverManager.chromedriver().setup();
     }
