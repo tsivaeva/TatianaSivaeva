@@ -25,13 +25,13 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>my-repo</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/my-repo/calculator-1.0.jar</systemPath>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>my-repo</groupId>-->
+<!--            <artifactId>calculator</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/my-repo/calculator-1.0.jar</systemPath>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
