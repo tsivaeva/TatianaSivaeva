@@ -2,6 +2,7 @@ package com.epam.tc.hw4.utils;
 
 import static com.epam.tc.hw4.tests.BaseTest.webDriver;
 
+import com.epam.tc.hw3.pages.LoginPage;
 import io.qameta.allure.Step;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,36 +16,38 @@ public class AssertStep extends PageObjectInitialization {
         super(webDriver);
     }
 
-    SoftAssertions softAssertions = new SoftAssertions();
+    SoftAssertions softly = new SoftAssertions();
 
     @Step("Assert page title")
     public void assertTitle(String title) {
-        softAssertions.assertThat(webDriver.getTitle()).isEqualTo(title);
-        softAssertions.assertAll();
+        softly.assertThat(webDriver.getTitle()).isEqualTo(title);
+        softly.assertAll();
     }
 
     @Step("Assert login")
     public void assertLogin(String userName) {
-        softAssertions.assertThat(loginPage.initLoginPage(webDriver).getUserName().getText()).isEqualTo(userName);
-        softAssertions.assertAll();
+        softly.assertThat(new LoginPage(webDriver).getUserName().getText()).isEqualTo(userName);
+        softly.assertAll();
     }
 
     @Step("Assert headers")
     public void assertHeaders() {
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getNavigationBarHeaderElement()
+        softly.assertThat(homePage.getHeaderMenuComponent().getNavigationBarHeaderElement()
                 .size()).isEqualTo(4);
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getHomeHeaderElement().isDisplayed());
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getContactFormHeaderElement().isDisplayed());
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getServiceHeaderElement().isDisplayed());
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getMetalColorsHeaderElement().isDisplayed());
+        softly.assertThat(homePage.getHeaderMenuComponent().getHomeHeaderElement().isDisplayed()).isTrue();
+        softly.assertThat(homePage.getHeaderMenuComponent().getContactFormHeaderElement().isDisplayed()).isTrue();
+        softly.assertThat(homePage.getHeaderMenuComponent().getServiceHeaderElement().isDisplayed()).isTrue();
+        softly.assertThat(homePage.getHeaderMenuComponent().getMetalColorsHeaderElement().isDisplayed()).isTrue();
+        softly.assertAll();
     }
 
     @Step("Assert images")
     public void assertImages() {
-        softAssertions.assertThat(homePage.getListOfImages().size()).isEqualTo(4);
+        softly.assertThat(homePage.getListOfImages().size()).isEqualTo(4);
         for (WebElement webElement : homePage.getListOfImages()) {
-            webElement.isDisplayed();
+            softly.assertThat(webElement.isDisplayed()).isTrue();
         }
+        softly.assertAll();
     }
 
     @Step("Assert texts for images")
@@ -65,13 +68,14 @@ public class AssertStep extends PageObjectInitialization {
                         + "some external projects),\n"
                         + "wish to get more…");
 
-        softAssertions.assertThat(actualText.size()).isEqualTo(4);
-        softAssertions.assertThat(actualText).isEqualTo(expectedText);
+        softly.assertThat(actualText.size()).isEqualTo(4);
+        softly.assertThat(actualText).isEqualTo(expectedText);
+        softly.assertAll();
     }
 
     @Step("Assert iframe")
     public void assertIFrame() {
-        softAssertions.assertThat(homePage.getFrameButton().isDisplayed());
+        softly.assertThat(homePage.getFrameButton().isDisplayed());
     }
 
     @Step("Assert items in the left section")
@@ -84,39 +88,40 @@ public class AssertStep extends PageObjectInitialization {
         List<String> expectedText = Arrays.asList(
                 "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
 
-        softAssertions.assertThat(actualText.size()).isEqualTo(5);
-        softAssertions.assertThat(actualText).isEqualTo(expectedText);
-        softAssertions.assertAll();
+        softly.assertThat(actualText.size()).isEqualTo(5);
+        softly.assertThat(actualText).isEqualTo(expectedText);
+        softly.assertAll();
     }
 
     @Step("Assert that checkbox is selected")
     public void assertCheckBoxIsSelected(String checkBoxName, boolean bool) {
         WebElement checkBoxElement = othersElementsPage.findElement(checkBoxName);
         if (bool = true) {
-            softAssertions.assertThat(checkBoxElement.isSelected()).isTrue();
+            softly.assertThat(checkBoxElement.isSelected()).isTrue();
         } else {
-            softAssertions.assertThat(checkBoxElement.isSelected()).isFalse();
+            softly.assertThat(checkBoxElement.isSelected()).isFalse();
         }
-        softAssertions.assertAll();
+        softly.assertAll();
     }
 
     @Step("Assert color")
     public void assertColor(String color) {
-        softAssertions.assertThat(othersElementsPage.getColorsDropDownComponent().findColor(color)
+        softly.assertThat(othersElementsPage.getColorsDropDownComponent().findColor(color)
                 .getText()).isEqualTo(color);
+        softly.assertAll();
     }
 
     @Step("Assert logs")
     public void assertLogs() {
-        softAssertions.assertThat(othersElementsPage.getLogComponent().getLogs().size()).isEqualTo(4);
-        softAssertions.assertThat(othersElementsPage.getLogComponent()
+        softly.assertThat(othersElementsPage.getLogComponent().getLogs().size()).isEqualTo(4);
+        softly.assertThat(othersElementsPage.getLogComponent()
                 .isNatureElementDisplayed("Water", "true")).isTrue();
-        softAssertions.assertThat(othersElementsPage.getLogComponent()
+        softly.assertThat(othersElementsPage.getLogComponent()
                 .isNatureElementDisplayed("Wind", "true")).isTrue();
-        softAssertions.assertThat(othersElementsPage.getLogComponent()
+        softly.assertThat(othersElementsPage.getLogComponent()
                 .isMetalOrColorDisplayed("metal", "Selen")).isTrue();
-        softAssertions.assertThat(othersElementsPage.getLogComponent()
+        softly.assertThat(othersElementsPage.getLogComponent()
                 .isMetalOrColorDisplayed("Colors", "Yellow")).isTrue();
-        softAssertions.assertAll();
+        softly.assertAll();
     }
 }

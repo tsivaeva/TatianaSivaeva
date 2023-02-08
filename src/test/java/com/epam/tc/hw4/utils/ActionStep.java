@@ -2,6 +2,7 @@ package com.epam.tc.hw4.utils;
 
 import static com.epam.tc.hw4.tests.BaseTest.webDriver;
 
+import com.epam.tc.hw3.pages.LoginPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
@@ -13,8 +14,7 @@ public class ActionStep extends PageObjectInitialization {
 
     @Step("Login")
     public void login(String login, String password) {
-        loginPage.initLoginPage(webDriver)
-                .clickUserIcon().setUserName(login).setUserPassword(password).clickLoginButton();
+        new LoginPage(webDriver).clickUserIcon().setUserName(login).setUserPassword(password).clickLoginButton();
     }
 
     @Step("Switch to iframe")
