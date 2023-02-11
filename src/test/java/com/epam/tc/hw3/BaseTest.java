@@ -25,15 +25,10 @@ public class BaseTest {
     public void readProperties() {
         try (InputStream input = new FileInputStream(
                 "/home/tatiana_sivaeva/IdeaProjects/TatianaSivaeva/src/test/resources/config.properties")) {
-
             Properties prop = new Properties();
-
             prop.load(input);
-
             USER_LOGIN = prop.getProperty("USER_LOGIN");
             USER_PASSWORD = prop.getProperty("USER_PASSWORD");
-
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }

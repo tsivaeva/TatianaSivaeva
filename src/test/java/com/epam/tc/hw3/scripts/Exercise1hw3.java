@@ -51,10 +51,7 @@ public class Exercise1hw3 extends BaseTest {
     @Test(priority = 4)
     public void testImages() {
         softly.assertThat(homePage.getListOfImages().size()).isEqualTo(4);
-        for (WebElement webElement : homePage.getListOfImages()) {
-            softly.assertThat(webElement.isDisplayed()).isTrue();
-        }
-
+        homePage.getListOfImages().forEach(webElement -> softly.assertThat(webElement.isDisplayed()).isTrue());
         softly.assertAll();
     }
 
@@ -63,7 +60,6 @@ public class Exercise1hw3 extends BaseTest {
     public void testTextForImages() {
         List<String> actualText = homePage.getListOfTests().stream()
                 .map(WebElement::getText).collect(Collectors.toList());
-
         List<String> expectedText = Arrays.asList("To include good practices\n"
                         + "and ideas from successful\n"
                         + "EPAM project",
@@ -92,14 +88,9 @@ public class Exercise1hw3 extends BaseTest {
     //Step11 Assert that there are 5 items in the Left Section are displayed and they have proper text
     @Test(priority = 7)
     public void testSideMenu() {
-        List<String> actualText = new ArrayList<>();
-        for (WebElement webElement : homePage.getSideMenuComponent().getSideMenuItems()) {
-            actualText.add(webElement.getText());
-        }
-
+        List<String> actualText = homePage.getSideMenuComponent().getSideMenuItems().stream().map(WebElement::getText).collect(Collectors.toList());
         List<String> expectedText = Arrays.asList(
                 "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
-
         softly.assertThat(actualText.size()).isEqualTo(5);
         softly.assertThat(actualText).isEqualTo(expectedText);
         softly.assertAll();
