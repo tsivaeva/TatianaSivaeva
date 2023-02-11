@@ -25,7 +25,8 @@ public class AssertStep extends PageObjectInitialization {
 
     @Step("Assert login")
     public void assertLogin(String userName) {
-        softAssertions.assertThat(loginPage.initLoginPage(webDriver).getUserName().getText()).isEqualTo(userName);
+        softAssertions.assertThat(loginPage.initLoginPage(webDriver)
+                .getUserName().getText()).isEqualTo(userName);
         softAssertions.assertAll();
     }
 
@@ -33,10 +34,13 @@ public class AssertStep extends PageObjectInitialization {
     public void assertHeaders() {
         softAssertions.assertThat(homePage.getHeaderMenuComponent().getNavigationBarHeaderElement()
                 .size()).isEqualTo(4);
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getHomeHeaderElement().isDisplayed());
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getContactFormHeaderElement().isDisplayed());
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getServiceHeaderElement().isDisplayed());
-        softAssertions.assertThat(homePage.getHeaderMenuComponent().getMetalColorsHeaderElement().isDisplayed());
+        softAssertions.assertThat(homePage.getHeaderMenuComponent().getHomeHeaderElement().isDisplayed()).isTrue();
+        softAssertions.assertThat(homePage.getHeaderMenuComponent()
+                .getContactFormHeaderElement().isDisplayed()).isTrue();
+        softAssertions.assertThat(homePage.getHeaderMenuComponent()
+                .getServiceHeaderElement().isDisplayed()).isTrue();
+        softAssertions.assertThat(homePage.getHeaderMenuComponent()
+                .getMetalColorsHeaderElement().isDisplayed()).isTrue();
     }
 
     @Step("Assert images")
@@ -71,7 +75,7 @@ public class AssertStep extends PageObjectInitialization {
 
     @Step("Assert iframe")
     public void assertIFrame() {
-        softAssertions.assertThat(homePage.getFrameButton().isDisplayed());
+        softAssertions.assertThat(homePage.getFrameButton().isDisplayed()).isTrue();
     }
 
     @Step("Assert items in the left section")
