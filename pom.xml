@@ -67,6 +67,16 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.11.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -179,6 +189,15 @@
             </activation>
             <properties>
                 <suite.xml.file>suitehw4.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw5</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml.file>suitehw5.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
