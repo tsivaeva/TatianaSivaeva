@@ -29,6 +29,7 @@ public class LoginPageHW5 extends MainPageHW5 {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
     }
+
     public WebElement getUserIcon() {
         return userIcon;
     }
@@ -82,6 +83,7 @@ public class LoginPageHW5 extends MainPageHW5 {
         this.getLoginButton().click();
         return this;
     }
+
     public void openMainPage() {
         webDriver.manage().window().maximize();
         webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");

@@ -3,12 +3,12 @@ package com.epam.tc.hw5.steps;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.epam.tc.hw5.utils.PageObjectInitializationHW5;
-import org.assertj.core.api.SoftAssertions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.util.ArrayList;
 import java.util.List;
+import org.assertj.core.api.SoftAssertions;
 
 public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
