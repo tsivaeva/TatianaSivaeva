@@ -127,5 +127,17 @@
                 <suite.xml.file>Exercise2.xml</suite.xml.file>
             </properties>
         </profile>
+        <profile>
+            <id>exercise1hw3</id>
+            <properties>
+                <suite.xml.file>exercise1hw3.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>exercise2hw3</id>
+            <properties>
+                <suite.xml.file>exercise2hw3.xml</suite.xml.file>
+            </properties>
+        </profile>
     </profiles>
 </project>
