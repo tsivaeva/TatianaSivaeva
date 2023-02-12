@@ -1,8 +1,6 @@
 package com.epam.tc.hw5.pages;
 
 import com.epam.tc.hw5.pages.components.HeaderMenuComponentHW5;
-import com.epam.tc.hw5.pages.components.SideMenuComponentHW5;
-import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,8 +11,6 @@ public class HomePageHW5 extends MainPageHW5 {
 
     private final HeaderMenuComponentHW5 headerMenuComponent;
 
-    private final SideMenuComponentHW5 sideMenuComponent;
-
     @FindBy(partialLinkText = "DIFFERENT ELEMENTS")
     private WebElement differentElements;
 
@@ -22,9 +18,7 @@ public class HomePageHW5 extends MainPageHW5 {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
         headerMenuComponent = new HeaderMenuComponentHW5();
-        sideMenuComponent = new SideMenuComponentHW5();
         PageFactory.initElements(webDriver, headerMenuComponent);
-        PageFactory.initElements(webDriver, sideMenuComponent);
     }
 
     public HeaderMenuComponentHW5 getHeaderMenuComponent() {

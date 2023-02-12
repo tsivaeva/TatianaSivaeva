@@ -50,7 +50,6 @@ public class LoginPageHW5 extends MainPageHW5 {
         return userName;
     }
 
-
     public void login(String name, String password, WebDriver webDriver) {
         getUserIcon().click();
         getNameField().sendKeys(name);
