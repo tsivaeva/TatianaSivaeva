@@ -10,19 +10,30 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aspectj>1.9.19</aspectj>
+        <testng>7.7.0</testng>
+        <assertj-core>3.23.1</assertj-core>
+        <maven-compiler-plugin>3.10.1</maven-compiler-plugin>
+        <webdrivermanager>5.3.1</webdrivermanager>
+        <selenium-java>4.8.0</selenium-java>
+        <allure-testng>2.20.1</allure-testng>
+        <assertj-core>3.23.1</assertj-core>
         <aspectj.version>1.9.19</aspectj.version>
+        <lombok.version>1.18.24</lombok.version>
+        <cucumber-java.version>7.11.0</cucumber-java.version>
+        <cucumber-testng.version>7.11.0</cucumber-testng.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.0</version>
+            <version>${testng}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.23.1</version>
+            <version>${assertj-core}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -35,25 +46,24 @@
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.10.1</version>
+            <version>${maven-compiler-plugin}</version>
             <type>maven-plugin</type>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.3.1</version>
+            <version>${webdrivermanager}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.0</version>
+            <version>${selenium-java}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.20.1</version>
+            <version>${allure-testng}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -64,18 +74,24 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.23.1</version>
+            <version>${assertj-core}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.11.0</version>
+            <version>${cucumber-java.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.11.0</version>
+            <version>${cucumber-testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
