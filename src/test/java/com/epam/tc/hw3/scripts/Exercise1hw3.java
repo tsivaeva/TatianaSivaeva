@@ -88,7 +88,8 @@ public class Exercise1hw3 extends BaseTest {
     //Step11 Assert that there are 5 items in the Left Section are displayed and they have proper text
     @Test(priority = 7)
     public void testSideMenu() {
-        List<String> actualText = homePage.getSideMenuComponent().getSideMenuItems().stream().map(WebElement::getText).collect(Collectors.toList());
+        List<String> actualText = homePage.getSideMenuComponent()
+                .getSideMenuItems().stream().map(WebElement::getText).collect(Collectors.toList());
         List<String> expectedText = Arrays.asList(
                 "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
         softly.assertThat(actualText.size()).isEqualTo(5);
