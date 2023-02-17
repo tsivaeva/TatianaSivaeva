@@ -26,7 +26,8 @@ public class BaseTest {
     @BeforeClass
     public void preparetoTest(ITestContext testContext) {
         webDriver = new DriverManager().setupDriver(URL);
-        System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\"");
+        System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\"" +
+                ",\"--disable-extensions\",\"disable-infobars\",\"--disable-gpu\"");
         testContext.setAttribute("driver", webDriver);
         actionStep = new ActionStep(webDriver);
         assertStep = new AssertStep(webDriver);
