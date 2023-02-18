@@ -10,7 +10,7 @@ public class DriverManager {
     public WebDriver setupDriver(String url) {
         setupChromeDriver();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
+        options.addArguments("--headless", "--no-sandbox");
         WebDriver webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
         webDriver.get(url);
