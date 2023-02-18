@@ -8,9 +8,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DriverManager {
 
     public WebDriver setupDriver(String url) {
+        setupChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-        setupChromeDriver();
         WebDriver webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
         webDriver.get(url);
