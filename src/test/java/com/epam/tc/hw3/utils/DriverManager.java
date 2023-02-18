@@ -9,11 +9,10 @@ public class DriverManager {
 
     public WebDriver setupDriver(String url) {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
         options.addArguments("--no-sandbox");
         setupChromeDriver();
         WebDriver webDriver = new ChromeDriver(options);
-        webDriver.manage().window();
+        webDriver.manage().window().maximize();
         webDriver.get(url);
         return webDriver;
     }
