@@ -10,7 +10,12 @@ public class DriverManager {
     public WebDriver setupDriver(String url) {
         setupChromeDriver();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--no-sandbox", "--ignore-certificate-errors", "--disable-dev-shm-usage");
+        options.addArguments("start-maximized"); // open Browser in maximized mode
+        options.addArguments("disable-infobars"); // disabling infobars
+        options.addArguments("--disable-extensions"); // disabling extensions
+        options.addArguments("--disable-gpu"); // applicable to windows os only
+        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+        options.addArguments("--no-sandbox"); // Bypass OS security model
         WebDriver webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
         webDriver.get(url);
