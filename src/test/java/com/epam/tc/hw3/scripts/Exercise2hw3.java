@@ -1,13 +1,13 @@
 package com.epam.tc.hw3.scripts;
 
-import com.epam.tc.TestDatahw3;
+import com.epam.tc.hw3.BaseTest;
 import com.epam.tc.hw3.pages.HomePage;
 import com.epam.tc.hw3.pages.LoginPage;
 import com.epam.tc.hw3.pages.OthersElementsPage;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
-public class Exercise2hw3 extends TestDatahw3 {
+public class Exercise2hw3 extends BaseTest {
 
     LoginPage loginPage;
     HomePage homePage;
@@ -25,9 +25,9 @@ public class Exercise2hw3 extends TestDatahw3 {
     //Step4 Assert User name in the left-top side of screen that user is loggined
     @Test(priority = 2)
     public void testLogin() {
-        loginPage.initLoginPage(webDriver)
+        new LoginPage(webDriver)
                 .clickUserIcon().setUserName(USER_LOGIN).setUserPassword(USER_PASSWORD).clickLoginButton();
-        softAssertions.assertThat(loginPage.initLoginPage(webDriver).getUserName().getText()).isEqualTo(USER_NAME);
+        softAssertions.assertThat(new LoginPage(webDriver).getUserName().getText()).isEqualTo(USER_NAME);
     }
 
     //Step5 Open through the header menu Service -> Different Elements Page

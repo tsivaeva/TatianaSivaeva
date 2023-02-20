@@ -14,22 +14,10 @@ public class LogComponent {
     }
 
     public boolean isNatureElementDisplayed(String elem, String status) {
-        boolean isDisplayed = false;
-        for (WebElement log : logs) {
-            if (log.getText().contains(elem + ": condition changed to " + status)) {
-                isDisplayed = true;
-            }
-        }
-        return isDisplayed;
+        return logs.stream().anyMatch(log -> log.getText().contains(elem + ": condition changed to " + status));
     }
 
     public boolean isMetalOrColorDisplayed(String elem, String status) {
-        boolean isDisplayed = false;
-        for (WebElement log : logs) {
-            if (log.getText().contains(elem + ": value changed to " + status)) {
-                isDisplayed = true;
-            }
-        }
-        return isDisplayed;
+        return logs.stream().anyMatch(log -> log.getText().contains(elem + ": value changed to " + status));
     }
 }
