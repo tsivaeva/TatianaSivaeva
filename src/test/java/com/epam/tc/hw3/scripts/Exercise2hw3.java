@@ -1,14 +1,16 @@
 package com.epam.tc.hw3.scripts;
 
-import com.epam.tc.TestDatahw3;
+import com.epam.tc.hw3.TestDatahw3;
 import com.epam.tc.hw3.pages.HomePage;
 import com.epam.tc.hw3.pages.LoginPage;
 import com.epam.tc.hw3.pages.OthersElementsPage;
 import org.assertj.core.api.SoftAssertions;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 public class Exercise2hw3 extends TestDatahw3 {
 
+    public static WebDriver webDriver;
     LoginPage loginPage;
     HomePage homePage;
     OthersElementsPage othersElementsPage;

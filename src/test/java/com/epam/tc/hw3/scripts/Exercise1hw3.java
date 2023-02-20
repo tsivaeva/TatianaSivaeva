@@ -1,6 +1,8 @@
 package com.epam.tc.hw3.scripts;
 
-import com.epam.tc.TestDatahw3;
+import static com.epam.tc.hw3.scripts.Exercise2hw3.webDriver;
+
+import com.epam.tc.hw3.TestDatahw3;
 import com.epam.tc.hw3.pages.HomePage;
 import com.epam.tc.hw3.pages.LoginPage;
 import java.util.ArrayList;
@@ -9,7 +11,6 @@ import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
 
 public class Exercise1hw3 extends TestDatahw3 {
 
