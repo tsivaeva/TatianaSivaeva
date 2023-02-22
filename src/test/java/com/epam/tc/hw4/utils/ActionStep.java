@@ -41,6 +41,6 @@ public class ActionStep extends PageObjectInitialization {
     @Step("Select color")
     public void selectColor(String color) {
         othersElementsPage.getColorsDropDownComponent().clickOnDropDownColor();
-        othersElementsPage.getColorsDropDownComponent().findColor("Yellow").click();
+        othersElementsPage.getColorsDropDownComponent().findColor(color).click();
     }
 }

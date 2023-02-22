@@ -55,7 +55,6 @@ public class OthersElementsPage {
 
     public WebElement findElement(String checkBoxName) {
         String xpath = String.format("//label[text()[contains(.,' %s')]]/input", checkBoxName);
-        WebElement checkBoxElement = webDriver.findElement(By.xpath(xpath));
-        return checkBoxElement;
+        return webDriver.findElement(By.xpath(xpath));
     }
 }

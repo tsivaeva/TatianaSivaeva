@@ -95,12 +95,7 @@ public class AssertStep extends PageObjectInitialization {
 
     @Step("Assert that checkbox is selected")
     public void assertCheckBoxIsSelected(String checkBoxName, boolean bool) {
-        WebElement checkBoxElement = othersElementsPage.findElement(checkBoxName);
-        if (bool = true) {
-            softly.assertThat(checkBoxElement.isSelected()).isTrue();
-        } else {
-            softly.assertThat(checkBoxElement.isSelected()).isFalse();
-        }
+        softly.assertThat(othersElementsPage.findElement(checkBoxName).isSelected()).isTrue();
         softly.assertAll();
     }
 
