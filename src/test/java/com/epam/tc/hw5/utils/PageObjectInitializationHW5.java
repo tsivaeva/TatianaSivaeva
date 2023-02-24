@@ -15,7 +15,7 @@ public class PageObjectInitializationHW5 {
     protected UserTablePageHW5 userTable;
 
     public PageObjectInitializationHW5() {
-        webDriver = new DriverManagerUtils().setupDriver();
+        webDriver = DriverManagerUtils.setupDriver();
 
         othersElementsPageHW5 = new OthersElementsPageHW5(webDriver);
         homePage = new HomePageHW5(webDriver);

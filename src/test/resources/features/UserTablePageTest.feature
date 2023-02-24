@@ -5,10 +5,10 @@ Feature: User Table Page Test
     Then Page Title should be "Home Page"
     When User logins with login "Roman" and password "Jdi1234"
     Then User name "ROMAN IOVLEV" should be displayed
-    When User clicks on "User Table" button in Service dropdown
-    Then Page Title should be "User Table"
 
     Scenario: User Table Page test
+      When User clicks on "User Table" button in Service dropdown
+      Then Page Title should be "User Table"
       Then 6 Number Type Dropdowns should be displayed on Users Table on User Table Page
       And 6 Usernames should be displayed on Users Table on User Table Page
       And 6 Description texts under images should be displayed on Users Table on User Table Page
@@ -28,5 +28,5 @@ Feature: User Table Page Test
         | Manager         |
 
     Scenario: User selects VIP checkbox
-      And User selects vip checkbox for "Sergey Ivan"
+      When User selects vip checkbox for "Sergey Ivan"
       Then 1 log row has "Vip: condition changed to true" text in log section

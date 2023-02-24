@@ -32,12 +32,7 @@ public class ColorsDropDownComponentHW5 extends MainPageHW5 {
     }
 
     public boolean isColorDisplayed(String colorName) {
-        boolean isDisplayed = false;
-        for (WebElement webElement : getColorsList()) {
-            if (webElement.getText().equals(colorName) & webElement.isDisplayed()) {
-                isDisplayed = true;
-            }
-        }
-        return isDisplayed;
+        return getColorsList().stream().anyMatch(webElement -> webElement
+                .getText().equals(colorName) & webElement.isDisplayed());
     }
 }

@@ -3,12 +3,13 @@ package com.epam.tc.hw5.pages;
 import com.epam.tc.hw5.pages.components.ColorsDropDownComponentHW5;
 import com.epam.tc.hw5.pages.components.LogComponentHW5;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class OthersElementsPageHW5  extends MainPageHW5 {
+public class OthersElementsPageHW5 extends MainPageHW5 {
 
     private final ColorsDropDownComponentHW5 colorsDropDownComponent;
 
@@ -39,12 +40,8 @@ public class OthersElementsPageHW5  extends MainPageHW5 {
     }
 
     public WebElement findElementFromList(String checkboxName) {
-        WebElement element = null;
-        for (WebElement webElement : getCheckboxList()) {
-            if (webElement.getText().equals(checkboxName)) {
-                element = webElement;
-            }
-        }
-        return element;
+
+        return getCheckboxList().stream().filter(elem -> elem.getText().equals(checkboxName)).findAny().orElseThrow(()
+                -> new NoSuchElementException("I can not to finde element  with checkboxName" + checkboxName));
     }
 }

@@ -1,10 +1,10 @@
 Feature: Verify different elements page
 
   Background:
-    When User opens the website
-    Then Page Title should be "Home Page"
-    When User logins with login "Roman" and password "Jdi1234"
-    Then User name "ROMAN IOVLEV" should be displayed
+    Given User opens the website
+    And Page Title should be "Home Page"
+    And User logins with login "Roman" and password "Jdi1234"
+    And User name "ROMAN IOVLEV" should be displayed
 
   Scenario: Verify different elements page
     When User navigates to different elements page

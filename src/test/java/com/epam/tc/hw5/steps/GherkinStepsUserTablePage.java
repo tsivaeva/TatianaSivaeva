@@ -11,6 +11,13 @@ import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 
 public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
+    @When("User selects vip checkbox for {string}")
+    public void user_selects_vip_checkbox(String checkbox) {
+        if (checkbox.toLowerCase().contains("ivan")) {
+            userTable.selectVipCheckBox("ivan");
+        }
+    }
+
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
     public void number_type_dropdowns_should_be_displayed_on_users_table_on_user_table_page(Integer number) {
         assertThat(userTable.getlistTypeDropdowns().size()).isEqualTo(number);
@@ -36,13 +43,6 @@ public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
         List<String> typeUserValues = dataTable.asList();
         for (int i = 1; i < typeUserValues.size(); i++) {
             userTable.userRightsDropdown(typeUserValues.get(i));
-        }
-    }
-
-    @When("User selects vip checkbox for {string}")
-    public void user_selects_vip_checkbox(String checkbox) {
-        if (checkbox.toLowerCase().contains("ivan")) {
-            userTable.selectVipCheckBox("ivan");
         }
     }
 
