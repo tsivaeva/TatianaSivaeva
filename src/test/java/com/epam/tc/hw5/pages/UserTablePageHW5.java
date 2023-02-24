@@ -54,8 +54,15 @@ public class UserTablePageHW5 extends MainPageHW5 {
 
     public void userRightsDropdown(String value) {
         listTypeDropdowns.get(0).click();
-        WebElement dropdown = webDriver.findElement(By.xpath("//select/option[contains(. ,'" + value + "')]"));
+        String xpathExpression = "//select/option[contains(. ,'%s')]";
+        WebElement dropdown = webDriver.findElement(By.xpath(String.format(xpathExpression, value)));
         elementIsDisplayed(dropdown);
+    }
+
+    public List<String> getUserRightsDropdownOptions() {
+        listTypeDropdowns.get(0).click();
+        return webDriver.findElements(By.xpath("//select/option"))
+                .stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void selectVipCheckBox(String checkboxOption) {

@@ -13,9 +13,7 @@ import org.assertj.core.api.SoftAssertions;
 public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
     @When("User selects vip checkbox for {string}")
     public void user_selects_vip_checkbox(String checkbox) {
-        if (checkbox.toLowerCase().contains("ivan")) {
-            userTable.selectVipCheckBox("ivan");
-        }
+        userTable.selectVipCheckBox(checkbox);
     }
 
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
@@ -40,10 +38,9 @@ public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
 
     @Then("Droplist should contain values in column Type for user Roman")
     public void droplist_should_contain_values_in_column_Type_for_user_Roman(DataTable dataTable) {
-        List<String> typeUserValues = dataTable.asList();
-        for (int i = 1; i < typeUserValues.size(); i++) {
-            userTable.userRightsDropdown(typeUserValues.get(i));
-        }
+        List<String> expectedValue = dataTable.asList();
+        List<String> actualOptions = userTable.getUserRightsDropdownOptions();
+        assertThat(actualOptions).isEqualTo(expectedValue);
     }
 
     @Then("{int} log row has {string} text in log section")
@@ -55,11 +52,10 @@ public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
     @Then("User table should contain following values:")
     public void user_table_should_contain_following_values(DataTable dataTable) {
         SoftAssertions softly = new SoftAssertions();
-        List<List<String>> listOfUsers = dataTable.cells().subList(1, 7);
         List<String> numbers = new ArrayList<>();
         List<String> names = new ArrayList<>();
         List<String> descriptions = new ArrayList<>();
-        listOfUsers.forEach(els -> {
+        dataTable.cells().stream().skip(1).forEach(els -> {
             numbers.add(els.get(0));
             names.add(els.get(1));
             descriptions.add(els.get(2));
