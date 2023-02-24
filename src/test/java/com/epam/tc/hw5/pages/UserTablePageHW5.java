@@ -61,7 +61,7 @@ public class UserTablePageHW5 extends MainPageHW5 {
 
     public List<String> getUserRightsDropdownOptions() {
         listTypeDropdowns.get(0).click();
-        return webDriver.findElements(By.xpath("//select/option"))
+        return webDriver.findElements(By.xpath("//tr[2]/td[2]/select/option"))
                 .stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
