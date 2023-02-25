@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="HM7">
+    <test name="HW7">
+        <classes>
+            <class name= "com.epam.tc.hw7.SiteJdi"/>
+        </classes>
+    </test>
+</suite>

@@ -22,6 +22,8 @@
         <lombok.version>1.18.24</lombok.version>
         <cucumber-java.version>7.11.0</cucumber-java.version>
         <cucumber-testng.version>7.11.0</cucumber-testng.version>
+        <jdi-light-html.version>1.4.8</jdi-light-html.version>
+        <jackson.version>2.14.1</jackson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -92,6 +94,26 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -214,6 +236,12 @@
             </activation>
             <properties>
                 <suite.xml.file>suitehw5.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw7</id>
+            <properties>
+                <suite.xml.file>suitehw7.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
