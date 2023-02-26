@@ -15,7 +15,8 @@ public class MetalColorsDataProvider {
         try {
             map = mapper.readValue(MetalColorsDataProvider.class.getClassLoader()
                             .getResource("JDI_ex8_metalsColorsDataSet.json"),
-                    new TypeReference<HashMap<String, MetalsColorsJsonDTO>>() {});
+                    new TypeReference<>() {
+                    });
         } catch (Exception e) {
             throw new Exception("Incorrect file");
         }
@@ -25,7 +26,6 @@ public class MetalColorsDataProvider {
     @DataProvider(name = "json")
     public Object[][] dataProvider() throws Exception {
         Map<String, MetalsColorsJsonDTO> mapFromJson = MetalColorsDataProvider.getDTOfromJson();
-        mapFromJson.size();
         Object[][] objectMap = new Object[mapFromJson.size()][1];
         int i = 0;
         for (Map.Entry<String, MetalsColorsJsonDTO> entry : mapFromJson.entrySet()) {

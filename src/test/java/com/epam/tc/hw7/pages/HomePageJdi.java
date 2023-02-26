@@ -24,10 +24,6 @@ public class HomePageJdi extends WebPage {
         loginFormJdi.login(user);
     }
 
-    public String getUserName() {
-        return userName.getText();
-    }
-
     public void checkUserLoggedIn(User user) {
         userName.is().text(user.getFullName());
     }

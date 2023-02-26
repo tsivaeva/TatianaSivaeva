@@ -22,5 +22,4 @@ public class SiteJdi {
     public static void login(User user) {
         homePageJdi.login(user);
     }
-
 }
