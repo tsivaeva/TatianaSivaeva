@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class MetalsColorsLogForm extends Form {
+public class MetalsColorsLogForm {
 
     @FindBy(css = "ul[class='panel-body-list results'] > li")
     public WebList result;

@@ -7,6 +7,7 @@ import com.epam.tc.hw7.SiteJdi;
 import com.epam.tc.hw7.entities.MetalsColorsJsonDTO;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StepsHW7 {
 
@@ -31,19 +32,17 @@ public class StepsHW7 {
     public static void checkResultSection(MetalsColorsJsonDTO dto, List<String> logLost) {
         final String expectedSummary = "Summary: " + String.valueOf(dto.getSummary()
                 .get(0) + dto.getSummary().get(1));
-        String expectedElements = "Elements: ";
+        String expectedElements;
         final String expectedColor = "Color: " + dto.getColor();
         final String expectedMetal = "Metal: " + dto.getMetals();
-        String expectedVegetables = "Vegetables: ";
+        String expectedVegetables;
 
-        for (String str : dto.getElements()) {
-            expectedElements += str + ", ";
-        }
+        expectedElements = dto.getElements().stream().map(str1 -> str1 + ", ")
+                .collect(Collectors.joining("", "Elements: ", ""));
         expectedElements = expectedElements.substring(0, expectedElements.length() - 2);
 
-        for (String str : dto.getVegetables()) {
-            expectedVegetables += str + ", ";
-        }
+        expectedVegetables = dto.getVegetables().stream().map(str -> str + ", ")
+                .collect(Collectors.joining("", "Vegetables: ", ""));
         expectedVegetables = expectedVegetables.substring(0, expectedVegetables.length() - 2);
 
         List<String> expectedList =
