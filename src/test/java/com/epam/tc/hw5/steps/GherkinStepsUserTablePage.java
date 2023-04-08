@@ -12,8 +12,8 @@ import org.assertj.core.api.SoftAssertions;
 
 public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
     @When("User selects vip checkbox for {string}")
-    public void user_selects_vip_checkbox(String checkbox) {
-        userTable.selectVipCheckBox(checkbox);
+    public void user_selects_vip_checkbox(String name) {
+        userTable.selectVipCheckBox(name);
     }
 
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
@@ -46,7 +46,7 @@ public class GherkinStepsUserTablePage extends PageObjectInitializationHW5 {
     @Then("{int} log row has {string} text in log section")
     public void log_row_has_text_in_log_section(Integer number, String text) {
         userTable.assertNumberOfLogItems(number);
-        userTable.assertLogText(text);
+        assertThat(userTable.isLogWithTextDisplayed(text)).isTrue();
     }
 
     @Then("User table should contain following values:")

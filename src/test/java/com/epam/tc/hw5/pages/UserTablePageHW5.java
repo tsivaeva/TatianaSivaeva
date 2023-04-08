@@ -4,10 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class UserTablePageHW5 extends MainPageHW5 {
 
@@ -52,31 +54,24 @@ public class UserTablePageHW5 extends MainPageHW5 {
         return listCheckboxes;
     }
 
-    public void userRightsDropdown(String value) {
-        listTypeDropdowns.get(0).click();
-        String xpathExpression = "//select/option[contains(. ,'%s')]";
-        WebElement dropdown = webDriver.findElement(By.xpath(String.format(xpathExpression, value)));
-        elementIsDisplayed(dropdown);
-    }
-
     public List<String> getUserRightsDropdownOptions() {
         listTypeDropdowns.get(0).click();
         return webDriver.findElements(By.xpath("//tr[2]/td[2]/select/option"))
                 .stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
-    public void selectVipCheckBox(String checkboxOption) {
-        WebElement checkBox = webDriver.findElement(By.xpath("//*[@id = '" + checkboxOption + "']"));
-        checkBox.click();
+    public void selectVipCheckBox(String name) {
+        String xpath = "//a[contains(text(),'%s')]" +
+                "/ancestor::td/ancestor::tr//div[@class='user-descr']/input[@type='checkbox']";
+        webDriver.findElement(By.xpath(String.format(xpath, name))).click();
     }
 
     public void assertNumberOfLogItems(int numOfLogs) {
         assertThat(logs.size()).isEqualTo(numOfLogs);
     }
 
-    public void assertLogText(String logText) {
-        WebElement log = webDriver.findElement(By.xpath("//li[contains(. ,'" + logText + "')]"));
-        elementIsDisplayed(log);
+    public boolean isLogWithTextDisplayed(String logText) {
+        return webDriver.findElement(By.xpath("//li[contains(. ,'" + logText + "')]")).isDisplayed();
     }
 
     public List<String> getUserInTableValues() {
